@@ -1,0 +1,29 @@
+model:
+  provider: openrouter
+  model: minimax/minimax-m2.5:free
+
+approvals:
+  mode: smart
+
+terminal:
+  backend: local
+  timeout: 180
+
+platforms:
+  slack:
+    require_mention: true
+    reply_to_mode: first
+    extra:
+      reply_in_thread: true
+      reply_broadcast: false
+
+display:
+  tool_progress: all
+
+memory:
+  memory_enabled: true
+  user_profile_enabled: true
+
+compression:
+  enabled: true
+  threshold: 0.50
