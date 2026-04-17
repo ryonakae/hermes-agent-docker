@@ -36,7 +36,6 @@ export UV_TOOL_BIN_DIR="$UV_BIN_DIR"
 export UV_PYTHON_INSTALL_DIR="$UV_PYTHON_DIR"
 export UV_PYTHON_BIN_DIR="$UV_PYTHON_BIN"
 export UV_PYTHON_INSTALL_BIN="${UV_PYTHON_INSTALL_BIN:-1}"
-export PATH="$UV_BIN_DIR:$GCLOUD_DIR/bin:$GWS_DIR/bin:$AGENT_BROWSER_DIR/bin:$PATH"
 
 fail() {
   printf '%s\n' "$1" >&2
@@ -203,9 +202,7 @@ install_agent_browser
 seed_if_missing "$TEMPLATE_CONFIG_PATH" "$CONFIG_PATH"
 
 # Hermes terminal が bash -l で PATH をリセットされても復元できるようにする
-HERMES_HOME=$DATA_DIR/home
-ensure_writable_dir "$HERMES_HOME"
-cat > "$HERMES_HOME/.profile" <<PROFILE
+cat > /etc/profile.d/hermes-custom-path.sh <<PROFILE
 export PATH="$UV_BIN_DIR:$GCLOUD_DIR/bin:$GWS_DIR/bin:$AGENT_BROWSER_DIR/bin:\$PATH"
 PROFILE
 
