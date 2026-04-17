@@ -202,5 +202,12 @@ install_agent_browser
 # カスタム設定を seed する（公式 entrypoint のデフォルト seed より先に実行）
 seed_if_missing "$TEMPLATE_CONFIG_PATH" "$CONFIG_PATH"
 
+# Hermes terminal が bash -l で PATH をリセットされても復元できるようにする
+HERMES_HOME=$DATA_DIR/home
+ensure_writable_dir "$HERMES_HOME"
+cat > "$HERMES_HOME/.profile" <<PROFILE
+export PATH="$UV_BIN_DIR:$GCLOUD_DIR/bin:$GWS_DIR/bin:$AGENT_BROWSER_DIR/bin:\$PATH"
+PROFILE
+
 # 公式 entrypoint に委譲（権限降格、venv有効化、スキル同期、hermes 起動を行う）
 exec "$OFFICIAL_ENTRYPOINT" "$@"
