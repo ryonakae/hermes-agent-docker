@@ -27,8 +27,8 @@ docker compose down
 
 ## 重要ファイル
 
-- `Dockerfile`: ベースイメージ拡張。追加の apt / Python パッケージもここで管理する。
-- `docker-compose.yml`: ローカル起動定義。ポート、環境変数、永続化ボリュームを持つ。
+- `Dockerfile`: ベースイメージ拡張。追加の apt / Python パッケージと PATH などの環境変数もここで管理する。
+- `docker-compose.yml`: ローカル起動定義。ポート、永続化ボリュームを持つ。
 - `entrypoint.sh`: 初回 bootstrap、`gcloud` / `gws` / `agent-browser` 導入、seed 処理、gateway 起動を行う。
 - `config.defaults.yaml`: 初回のみ `hermes-data/config.yaml` へ seed する非機密設定。
 - `.env.example`: 利用者が `.env` を作るためのテンプレート。

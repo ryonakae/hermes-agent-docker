@@ -22,7 +22,6 @@ services:
       UV_PYTHON_INSTALL_DIR: /opt/data/tools/uv/python
       UV_PYTHON_BIN_DIR: /opt/data/tools/uv/bin
       UV_PYTHON_INSTALL_BIN: "1"
-      PATH: /opt/data/tools/uv/bin:/opt/data/tools/gcloud/sdk/bin:/opt/data/tools/gws/install/bin:/opt/data/tools/agent-browser/install/bin:/opt/hermes/.venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
     healthcheck:
       test: ["CMD", "curl", "-sf", "http://localhost:8642"]
       interval: 30s
