@@ -1,0 +1,6 @@
+#!/bin/sh
+set -eu
+export HERMES_HOME=/opt/data
+export PYTHONPATH=/opt/hermes
+exec /opt/data/venvs/google-workspace-skill/bin/python \
+  /opt/data/skills/productivity/google-workspace/scripts/setup.py "$@"

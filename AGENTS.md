@@ -29,7 +29,8 @@ docker compose down
 
 - `Dockerfile`: ベースイメージ拡張。追加の apt / Python パッケージと PATH などの環境変数もここで管理する。
 - `docker-compose.yml`: ローカル起動定義。ポート、永続化ボリュームを持つ。
-- `entrypoint.sh`: 初回 bootstrap、`gcloud` / `gws` / `agent-browser` 導入、seed 処理、gateway 起動を行う。
+- `entrypoint.sh`: 初回 bootstrap、`gcloud` / `gws` / `agent-browser` 導入、`bin/` のラッパースクリプト配置、seed 処理、gateway 起動を行う。
+- `bin/`: コンテナ内ツールのカスタムラッパースクリプト。`bin/<tool>/` にスクリプトを置き、`entrypoint.sh` がツールインストール後に対応する bin ディレクトリへコピーする。
 - `config.defaults.yaml`: 初回のみ `hermes-data/config.yaml` へ seed する非機密設定。
 - `.env.example`: 利用者が `.env` を作るためのテンプレート。
 - `hermes-data/`: コンテナ内 `/opt/data` に bind mount されるローカル状態。git 管理しない。

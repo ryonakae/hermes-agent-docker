@@ -198,6 +198,10 @@ install_gcloud
 install_gws
 install_agent_browser
 
+# カスタムラッパースクリプトの配置
+CUSTOM_BIN_DIR=/usr/local/share/hermes/bin
+cp -f "$CUSTOM_BIN_DIR"/gws/* "$GWS_DIR/bin/" 2>/dev/null || true
+
 # カスタム設定を seed する（公式 entrypoint のデフォルト seed より先に実行）
 seed_if_missing "$TEMPLATE_CONFIG_PATH" "$CONFIG_PATH"
 
