@@ -22,7 +22,7 @@ services:
       UV_PYTHON_INSTALL_DIR: /opt/data/tools/uv/python
       UV_PYTHON_BIN_DIR: /opt/data/tools/uv/bin
       UV_PYTHON_INSTALL_BIN: "1"
-      PATH: /opt/data/tools/uv/bin:/opt/data/tools/gcloud/sdk/bin:/opt/data/tools/gws/install/bin:/opt/data/tools/agent-browser/install/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+      PATH: /opt/data/tools/uv/bin:/opt/data/tools/gcloud/sdk/bin:/opt/data/tools/gws/install/bin:/opt/data/tools/agent-browser/install/bin:/opt/hermes/.venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
     healthcheck:
       test: ["CMD", "curl", "-sf", "http://localhost:8642"]
       interval: 30s
@@ -43,8 +43,8 @@ services:
     build: .
     container_name: hermes-dashboard
     restart: unless-stopped
-    entrypoint: ["hermes"]
-    command: ["dashboard", "--host", "0.0.0.0"]
+    entrypoint: ["/opt/hermes/docker/entrypoint.sh"]
+    command: ["dashboard", "--host", "0.0.0.0", "--insecure", "--no-open"]
     ports:
       - "127.0.0.1:9119:9119"
     volumes:

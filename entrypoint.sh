@@ -2,6 +2,7 @@
 set -eu
 
 TEMPLATE_CONFIG_PATH=/usr/local/share/hermes/config.defaults.yaml
+OFFICIAL_ENTRYPOINT=/opt/hermes/docker/entrypoint.sh
 
 DATA_DIR=/opt/data
 CONFIG_PATH=$DATA_DIR/config.yaml
@@ -120,7 +121,8 @@ install_gcloud() {
   tar -xzf "$archive_path" -C "$tmp_dir"
 
   rm -rf "$GCLOUD_DIR"
-  mv "$tmp_dir/google-cloud-sdk" "$GCLOUD_DIR"
+  cp -a "$tmp_dir/google-cloud-sdk" "$GCLOUD_DIR"
+
   installed_version=$(read_gcloud_version || true)
   if [ -n "${installed_version:-}" ]; then
     printf '%s\n' "$installed_version" > "$GCLOUD_VERSION_FILE"
@@ -178,7 +180,7 @@ install_agent_browser() {
   printf '%s\n' "$installed_version" > "$AGENT_BROWSER_VERSION_FILE"
 }
 
-# データディレクトリの初期化
+# ツール用ディレクトリの初期化
 ensure_writable_dir "$DATA_DIR"
 ensure_writable_dir "$TOOLS_DIR"
 ensure_writable_dir "$CLOUDSDK_CONFIG"
@@ -192,18 +194,13 @@ ensure_writable_dir "$UV_TOOL_BIN_DIR"
 ensure_writable_dir "$UV_PYTHON_INSTALL_DIR"
 ensure_writable_dir "$UV_PYTHON_BIN_DIR"
 
-# Hermes のデータ構造を作成
-for dir in sessions memories skills cron hooks logs skins; do
-  ensure_writable_dir "$DATA_DIR/$dir"
-done
-
 # ツールのインストール
 install_gcloud
 install_gws
 install_agent_browser
 
-# 設定を seed する（既存設定がある場合は上書きしない）
+# カスタム設定を seed する（公式 entrypoint のデフォルト seed より先に実行）
 seed_if_missing "$TEMPLATE_CONFIG_PATH" "$CONFIG_PATH"
 
-# メインプロセスを起動
-exec hermes "$@"
+# 公式 entrypoint に委譲（権限降格、venv有効化、スキル同期、hermes 起動を行う）
+exec "$OFFICIAL_ENTRYPOINT" "$@"
