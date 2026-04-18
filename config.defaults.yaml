@@ -49,6 +49,10 @@ display:
 memory:
   memory_enabled: true
   user_profile_enabled: true
+  provider: holographic
+  holographic:
+    auto_extract: true
+    default_trust: 0.5
 
 compression:
   enabled: true
