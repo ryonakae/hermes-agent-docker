@@ -7,21 +7,20 @@
 ## クイックスタート
 
 ```bash
-cp .env.example .env
-```
-
-`.env` では最低限次を設定します。
-
-- `OPENROUTER_API_KEY`
-- `SLACK_BOT_TOKEN`
-- `SLACK_APP_TOKEN`
-- `SLACK_ALLOWED_USERS`
-
-起動と確認:
-
-```bash
 docker compose up -d --build
 docker compose logs -f hermes
+```
+
+初回起動時に `hermes-data/.env` が自動生成されます。最低限次の値を設定してから再起動します。
+
+```bash
+# hermes-data/.env を編集
+OPENROUTER_API_KEY=sk-...
+SLACK_BOT_TOKEN=xoxb-...
+SLACK_APP_TOKEN=xapp-...
+SLACK_ALLOWED_USERS=U...
+
+docker compose restart hermes
 ```
 
 初回起動時は `gcloud`、`gws 0.22.3`、`agent-browser 0.24.1` を自動導入するため、通常より時間がかかります。`uv` は Docker build 時にイメージへ同梱されます。
@@ -80,5 +79,5 @@ docker compose down
 
 - `hermes-data/` は git 管理しません。状態、秘密情報の保存先です。
 - `gcloud`、`gws`、`agent-browser` 本体と `agent-browser install` が展開するブラウザは `hermes-data/tools/` 配下に永続化されるため、コンテナ再作成後も再利用できます。
-- `config.defaults.yaml` は初回 seed 用です。既存の `hermes-data/config.yaml` がある場合は上書きしません。
+- `config.defaults.yaml` と `env.defaults` は初回 seed 用です。既存の `hermes-data/config.yaml` や `hermes-data/.env` がある場合は上書きしません。`env.defaults` に新しい変数を追加すると、次回起動時に未定義キーのみ `hermes-data/.env` へ追記されます。
 - 追加の apt / Python パッケージは Dockerfile の専用セクションで管理します。変更後は `docker compose up -d --build` で再ビルドします。

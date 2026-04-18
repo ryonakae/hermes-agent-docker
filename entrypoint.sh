@@ -205,6 +205,31 @@ cp -f "$CUSTOM_BIN_DIR"/gws/* "$GWS_DIR/bin/" 2>/dev/null || true
 # カスタム設定を seed する（公式 entrypoint のデフォルト seed より先に実行）
 seed_if_missing "$TEMPLATE_CONFIG_PATH" "$CONFIG_PATH"
 
+# .env の seed とカスタム変数のマージ
+OFFICIAL_ENV_EXAMPLE=/opt/hermes/.env.example
+CUSTOM_ENV_DEFAULTS=/usr/local/share/hermes/env.defaults
+ENV_PATH=$DATA_DIR/.env
+
+if [ ! -f "$ENV_PATH" ]; then
+  if [ -f "$OFFICIAL_ENV_EXAMPLE" ]; then
+    cp "$OFFICIAL_ENV_EXAMPLE" "$ENV_PATH"
+  else
+    touch "$ENV_PATH"
+  fi
+fi
+
+if [ -f "$CUSTOM_ENV_DEFAULTS" ]; then
+  while IFS= read -r line || [ -n "$line" ]; do
+    case "$line" in
+      '#'*|'') continue ;;
+    esac
+    key="${line%%=*}"
+    if ! grep -q "^${key}=" "$ENV_PATH"; then
+      printf '%s\n' "$line" >> "$ENV_PATH"
+    fi
+  done < "$CUSTOM_ENV_DEFAULTS"
+fi
+
 # Hermes terminal が bash -l で PATH をリセットされても復元できるようにする
 cat > /etc/profile.d/hermes-custom-path.sh <<PROFILE
 export PATH="$UV_BIN_DIR:$GCLOUD_DIR/bin:$GWS_DIR/bin:$AGENT_BROWSER_DIR/bin:\$PATH"

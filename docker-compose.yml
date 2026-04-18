@@ -10,24 +10,15 @@ services:
     command: ["gateway", "run"]
     ports:
       - "127.0.0.1:8642:8642"
-    env_file: .env
     environment:
-      CLOUDSDK_CONFIG: /opt/data/tools/gcloud/config
-      GOOGLE_WORKSPACE_CLI_CONFIG_DIR: /opt/data/tools/gws/config
-      GOOGLE_WORKSPACE_CLI_KEYRING_BACKEND: file
-      PLAYWRIGHT_BROWSERS_PATH: /opt/data/tools/agent-browser/browsers
-      UV_CACHE_DIR: /opt/data/tools/cache/uv
-      UV_TOOL_DIR: /opt/data/tools/uv/tools
-      UV_TOOL_BIN_DIR: /opt/data/tools/uv/bin
-      UV_PYTHON_INSTALL_DIR: /opt/data/tools/uv/python
-      UV_PYTHON_BIN_DIR: /opt/data/tools/uv/bin
-      UV_PYTHON_INSTALL_BIN: "1"
+      TZ: Asia/Tokyo
     healthcheck:
-      test: ["CMD", "curl", "-sf", "http://localhost:8642"]
+      test: ["CMD", "curl", "-sf", "http://localhost:8642/health"]
       interval: 30s
       timeout: 10s
       retries: 3
       start_period: 180s
+    shm_size: 1g
     volumes:
       - ./hermes-data:/opt/data
     networks:
@@ -39,7 +30,7 @@ services:
           cpus: "2.0"
 
   dashboard:
-    build: .
+    image: nousresearch/hermes-agent:latest
     container_name: hermes-dashboard
     restart: unless-stopped
     entrypoint: ["/opt/hermes/docker/entrypoint.sh"]

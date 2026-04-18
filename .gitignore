@@ -1,3 +1,2 @@
-.env
 hermes-data/*
 !hermes-data/.gitkeep
