@@ -177,6 +177,14 @@ install_agent_browser() {
 
   "$AGENT_BROWSER_DIR/bin/agent-browser" install
   printf '%s\n' "$installed_version" > "$AGENT_BROWSER_VERSION_FILE"
+
+  # Hermes 組み込みブラウザツールは $HERMES_HOME/.agent-browser/browsers を探すため、
+  # PLAYWRIGHT_BROWSERS_PATH のインストール先へシンボリックリンクを張る
+  mkdir -p "$DATA_DIR/.agent-browser"
+  ln -sfn "$AGENT_BROWSER_BROWSERS_DIR" "$DATA_DIR/.agent-browser/browsers"
+  # Hermes サブプロセス（HOME=/opt/data/home）からの再ダウンロードを防止
+  mkdir -p "$DATA_DIR/home"
+  ln -sfn "$DATA_DIR/.agent-browser" "$DATA_DIR/home/.agent-browser"
 }
 
 # ツール用ディレクトリの初期化
