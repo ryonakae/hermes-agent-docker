@@ -1,18 +1,9 @@
 ---
 name: hermes-agent
 description: |
-  Hermes Agent（Nous Research の AI CLI エージェント）のセットアップ、設定変更、
-  機能実装、トラブルシューティングを行うための完全ガイド。
-  config.yaml や .env の編集方法、MCP サーバーの追加、スキルの作成・インストール、
-  Telegram/Discord/Slack 等のメッセージングゲートウェイ構築、ボイスモード設定、
-  Cron タスクのスケジューリング、プラグイン開発、API サーバー公開など、
-  Hermes Agent に関するあらゆる作業で必ずこのスキルを使う。
-  ユーザーが hermes コマンドの使い方、config.yaml の書き方、ゲートウェイの設定、
-  LLM プロバイダーの切替、ツールセットの管理、MCP 統合、メモリシステム、
-  セキュリティ設定、Docker/SSH/Modal 等のターミナルバックエンド設定について
-  質問・作業した場合にトリガーする。「hermes」「ハーメス」「gateway」「MCP」
-  「hermes doctor」「hermes config」のようなキーワードがなくても、
-  Hermes Agent 関連の作業であればこのスキルを参照すること。
+  Hermes Agent（Nous Research の AI CLI エージェント）のセットアップ、設定、機能実装、トラブルシューティングの完全ガイド。
+  ユーザーが hermes / hermes agent / ハーメス に言及したとき、config.yaml / .env / SOUL.md / MEMORY.md を編集するとき、gateway / hermes doctor / hermes config / hermes model / hermes tools について質問したとき、MCP サーバー追加・スキル管理（hermes skills）・ボイスモード / TTS・cron タスク・Telegram / Discord / Slack ボット構築・LLM プロバイダー切替に関する作業のときに使う。
+  MCP や gateway が Hermes Agent 以外の文脈で使われているときや、関係ない話題のときは使わない。
 ---
 
 # Hermes Agent 操作・実装ガイド
