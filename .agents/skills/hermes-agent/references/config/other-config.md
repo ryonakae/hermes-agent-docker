@@ -1,5 +1,7 @@
 # その他の設定
 
+> 参照元: https://hermes-agent.nousresearch.com/docs/user-guide/configuration
+
 ## Quick コマンド
 
 ```yaml

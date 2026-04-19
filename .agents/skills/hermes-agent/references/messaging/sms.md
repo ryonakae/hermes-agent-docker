@@ -1,5 +1,7 @@
 # SMS (Twilio)
 
+> 参照元: https://hermes-agent.nousresearch.com/docs/user-guide/messaging/sms
+
 Twilio API 経由で SMS メッセージングに対応。Webhook でメッセージを受信する。
 
 ## 環境変数

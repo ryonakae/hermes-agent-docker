@@ -1,5 +1,7 @@
 # コンテキスト圧縮・チェックポイント・コンテキスト参照
 
+> 参照元: https://hermes-agent.nousresearch.com/docs/user-guide/features/context-files / https://hermes-agent.nousresearch.com/docs/user-guide/features/context-references
+
 ## コンテキスト圧縮
 
 長い会話を自動要約。最初の3ターンと最後の4ターンを保持。

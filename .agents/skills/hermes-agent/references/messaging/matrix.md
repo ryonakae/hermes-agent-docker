@@ -1,5 +1,7 @@
 # Matrix
 
+> 参照元: https://hermes-agent.nousresearch.com/docs/user-guide/messaging/matrix
+
 mautrix SDK ベースで Matrix プロトコルに対応。E2EE（エンドツーエンド暗号化）もサポート。
 
 ## 環境変数

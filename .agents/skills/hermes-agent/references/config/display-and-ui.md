@@ -1,5 +1,7 @@
 # 表示設定・スキン・ストリーミング
 
+> 参照元: https://hermes-agent.nousresearch.com/docs/user-guide/configuration#display-settings
+
 ## 表示設定
 
 ```yaml

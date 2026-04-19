@@ -1,5 +1,7 @@
 # メモリシステム
 
+> 参照元: https://hermes-agent.nousresearch.com/docs/user-guide/features/memory
+
 2つのファイルで構成:
 
 | ファイル | 用途 | 文字制限 |

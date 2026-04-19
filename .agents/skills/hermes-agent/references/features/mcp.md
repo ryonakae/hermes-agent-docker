@@ -1,5 +1,7 @@
 # MCP (Model Context Protocol)
 
+> 参照元: https://hermes-agent.nousresearch.com/docs/user-guide/features/mcp
+
 ツール名規則: `mcp_<server_name>_<tool_name>`
 
 ## stdio サーバー

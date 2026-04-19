@@ -1,5 +1,7 @@
 # Web ダッシュボード・God Mode・セキュリティモデル・メッセージングゲートウェイ概要
 
+> 参照元: https://hermes-agent.nousresearch.com/docs/user-guide/features/overview
+
 ## Web ダッシュボード
 
 ```bash

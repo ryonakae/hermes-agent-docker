@@ -1,5 +1,7 @@
 # TTS/STT/ボイスモード設定
 
+> 参照元: https://hermes-agent.nousresearch.com/docs/user-guide/configuration#tts-configuration
+
 ## TTS 設定
 
 ```yaml

@@ -1,5 +1,7 @@
 # Hermes Agent CLI コマンドリファレンス
 
+> 参照元: https://hermes-agent.nousresearch.com/docs/reference/cli-commands
+
 ## グローバルエントリポイント
 
 ```

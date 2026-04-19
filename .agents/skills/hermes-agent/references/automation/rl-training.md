@@ -1,5 +1,7 @@
 # RL トレーニング
 
+> 参照元: https://hermes-agent.nousresearch.com/docs/user-guide/features/rl-training
+
 ## 概要
 
 Hermes Agent はコード実行環境を使った強化学習 (RL) トレーニングをサポート。エージェントの行動を評価・改善するためのツールセット `rl` を提供する。

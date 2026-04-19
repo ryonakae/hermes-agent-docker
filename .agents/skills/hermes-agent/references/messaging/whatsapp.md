@@ -1,5 +1,7 @@
 # WhatsApp
 
+> 参照元: https://hermes-agent.nousresearch.com/docs/user-guide/messaging/whatsapp
+
 ## セットアップ (Baileys ブリッジ)
 
 Hermes Agent は [Baileys](https://github.com/WhiskeySockets/Baileys) ベースのブリッジ経由で WhatsApp に接続する。公式 API ではなく個人アカウントのセッションを利用する。

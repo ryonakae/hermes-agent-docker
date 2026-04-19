@@ -1,5 +1,7 @@
 # Cron / スケジュールタスク
 
+> 参照元: https://hermes-agent.nousresearch.com/docs/user-guide/features/cron
+
 ## スケジュール形式
 
 ```

@@ -1,5 +1,7 @@
 # コード実行
 
+> 参照元: https://hermes-agent.nousresearch.com/docs/user-guide/features/code-execution
+
 ## hermes_tools モジュール
 
 `execute_code` 内で使用可能な Python モジュール:

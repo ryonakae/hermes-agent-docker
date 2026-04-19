@@ -1,5 +1,7 @@
 # バッチ処理
 
+> 参照元: https://hermes-agent.nousresearch.com/docs/user-guide/features/batch-processing
+
 ## データセット形式
 
 ```jsonl

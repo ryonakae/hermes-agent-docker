@@ -1,5 +1,7 @@
 # Hermes Agent トラブルシューティング
 
+> 参照元: https://hermes-agent.nousresearch.com/docs/reference/faq
+
 ## インストール
 
 | 問題 | 解決策 |

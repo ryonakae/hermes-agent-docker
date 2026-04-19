@@ -1,5 +1,7 @@
 # Email (IMAP/SMTP)
 
+> 参照元: https://hermes-agent.nousresearch.com/docs/user-guide/messaging/email
+
 ## セットアップ
 
 1. メールプロバイダーでアプリパスワードを生成（2FA 有効時は必須）

@@ -1,5 +1,7 @@
 # Discord
 
+> 参照元: https://hermes-agent.nousresearch.com/docs/user-guide/messaging/discord
+
 ## セットアップ
 
 1. [Discord Developer Portal](https://discord.com/developers/applications) でアプリケーション作成

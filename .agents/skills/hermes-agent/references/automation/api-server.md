@@ -1,5 +1,7 @@
 # API サーバー
 
+> 参照元: https://hermes-agent.nousresearch.com/docs/user-guide/features/api-server
+
 ## エンドポイント
 
 | エンドポイント | メソッド | 説明 |

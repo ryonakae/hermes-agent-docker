@@ -1,5 +1,7 @@
 # セキュリティ・承認モード・ブロックリスト
 
+> 参照元: https://hermes-agent.nousresearch.com/docs/user-guide/configuration#security
+
 ## セキュリティ設定
 
 ```yaml

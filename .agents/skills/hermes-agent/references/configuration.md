@@ -1,5 +1,7 @@
 # Hermes Agent 設定リファレンス
 
+> 参照元: https://hermes-agent.nousresearch.com/docs/user-guide/configuration
+
 ## 概要
 
 Hermes Agent の `config.yaml` 設定項目をカテゴリ別にまとめたリファレンス。モデル、ターミナル、表示、メモリ、音声、MCP、セキュリティなど全設定カテゴリを網羅する。

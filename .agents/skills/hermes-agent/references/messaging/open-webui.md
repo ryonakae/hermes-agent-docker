@@ -1,5 +1,7 @@
 # Open WebUI
 
+> 参照元: https://hermes-agent.nousresearch.com/docs/user-guide/messaging/open-webui
+
 API サーバーとして統合。Chat Completions API / Responses API に対応。
 
 ## セットアップ

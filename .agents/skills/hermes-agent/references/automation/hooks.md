@@ -1,5 +1,7 @@
 # イベントフック
 
+> 参照元: https://hermes-agent.nousresearch.com/docs/user-guide/features/hooks
+
 ## Gateway フック
 
 `~/.hermes/skills/<skill>/HOOK.yaml` + `handler.py` でイベント駆動処理を定義:

@@ -1,5 +1,7 @@
 # Webhooks
 
+> 参照元: https://hermes-agent.nousresearch.com/docs/user-guide/messaging/webhooks
+
 HTTP Webhook でイベント駆動のメッセージ受信に対応。GitHub、GitLab 等の各種サービスと連携可能。
 
 ## 環境変数

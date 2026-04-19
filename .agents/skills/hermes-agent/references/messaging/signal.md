@@ -1,5 +1,7 @@
 # Signal
 
+> 参照元: https://hermes-agent.nousresearch.com/docs/user-guide/messaging/signal
+
 ## セットアップ (signal-cli)
 
 1. [signal-cli](https://github.com/AsamK/signal-cli) をデーモンモードで起動

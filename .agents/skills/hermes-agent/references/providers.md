@@ -1,5 +1,7 @@
 # Hermes Agent プロバイダーリファレンス
 
+> 参照元: https://hermes-agent.nousresearch.com/docs/integrations/providers
+
 ## サポートプロバイダー一覧
 
 | プロバイダー | 説明 | セットアップ |

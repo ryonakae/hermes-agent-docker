@@ -17,6 +17,8 @@ description: |
 
 # Hermes Agent 操作・実装ガイド
 
+> 参照元: https://hermes-agent.nousresearch.com/docs / https://github.com/NousResearch/hermes-agent
+
 Hermes Agent は Nous Research が開発した MIT ライセンスの AI CLI エージェント。ターミナル操作、Web 検索、ファイル編集、コード実行、メモリ、スキル、MCP 統合、17+ メッセージングプラットフォーム対応、ボイスモード、スケジュールタスクなどの機能を持つ。
 
 ## アーキテクチャ概要

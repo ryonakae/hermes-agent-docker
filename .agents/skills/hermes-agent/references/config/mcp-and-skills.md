@@ -1,5 +1,7 @@
 # MCP サーバー設定・スキル設定・外部ディレクトリ
 
+> 参照元: https://hermes-agent.nousresearch.com/docs/user-guide/configuration#skill-settings / https://hermes-agent.nousresearch.com/docs/reference/mcp-config-reference
+
 ## MCP サーバー設定
 
 ```yaml

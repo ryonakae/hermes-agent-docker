@@ -1,5 +1,7 @@
 # DingTalk (钉钉)
 
+> 参照元: https://hermes-agent.nousresearch.com/docs/user-guide/messaging/dingtalk
+
 Stream Mode（WebSocket）で接続。パブリック URL 不要で利用可能。
 
 ## 環境変数

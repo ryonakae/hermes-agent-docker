@@ -1,5 +1,7 @@
 # Home Assistant
 
+> 参照元: https://hermes-agent.nousresearch.com/docs/user-guide/messaging/homeassistant
+
 Home Assistant と REST API / WebSocket で接続し、スマートホームデバイスを制御する。
 
 ## 環境変数

@@ -1,5 +1,7 @@
 # Hermes Agent メッセージングプラットフォーム リファレンス
 
+> 参照元: https://hermes-agent.nousresearch.com/docs/user-guide/messaging/
+
 ## 概要
 
 Hermes Agent は `hermes gateway` コマンドでメッセージングプラットフォームと接続する。各プラットフォームは `.env` の API キーと `config.yaml` の設定で構成される。

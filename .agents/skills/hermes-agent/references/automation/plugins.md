@@ -1,5 +1,7 @@
 # プラグインシステム
 
+> 参照元: https://hermes-agent.nousresearch.com/docs/user-guide/features/plugins
+
 ## ディレクトリ構造
 
 ```

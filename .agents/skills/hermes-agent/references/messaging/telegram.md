@@ -1,5 +1,7 @@
 # Telegram
 
+> 参照元: https://hermes-agent.nousresearch.com/docs/user-guide/messaging/telegram
+
 ## セットアップ
 
 1. [@BotFather](https://t.me/BotFather) で `/newbot` → ボットトークンを取得

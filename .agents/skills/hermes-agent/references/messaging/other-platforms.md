@@ -1,5 +1,7 @@
 # その他のプラットフォーム
 
+> 参照元: https://hermes-agent.nousresearch.com/docs/user-guide/messaging/feishu / https://hermes-agent.nousresearch.com/docs/user-guide/messaging/wecom / https://hermes-agent.nousresearch.com/docs/user-guide/messaging/bluebubbles / https://hermes-agent.nousresearch.com/docs/user-guide/messaging/qqbot
+
 以下のプラットフォームも対応。詳細は `hermes setup` のインタラクティブウィザード参照。
 
 | プラットフォーム | 接続方式 | 主要環境変数 | 備考 |

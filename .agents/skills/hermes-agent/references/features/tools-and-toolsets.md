@@ -1,5 +1,7 @@
 # ツールセット一覧・バックグラウンドプロセス管理
 
+> 参照元: https://hermes-agent.nousresearch.com/docs/user-guide/features/tools / https://hermes-agent.nousresearch.com/docs/reference/tools-reference
+
 ## ツールセット一覧
 
 | ツールセット | 主要ツール | 説明 |

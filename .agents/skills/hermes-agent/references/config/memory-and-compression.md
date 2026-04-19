@@ -1,5 +1,7 @@
 # メモリ設定・コンテキスト圧縮・ファイル読み取り制限
 
+> 参照元: https://hermes-agent.nousresearch.com/docs/user-guide/configuration#memory-configuration
+
 ## メモリ設定
 
 ```yaml

@@ -1,5 +1,7 @@
 # Hermes Agent 自動化・高度機能リファレンス
 
+> 参照元: https://hermes-agent.nousresearch.com/docs/user-guide/features/
+
 ## 概要
 
 Hermes Agent の自動化機能と高度な拡張ポイントをまとめたリファレンス。スケジュール実行、サブエージェント委譲、プラグインなど、エージェントの能力を拡張する機能群を扱う。

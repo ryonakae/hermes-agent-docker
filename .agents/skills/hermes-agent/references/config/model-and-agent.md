@@ -1,5 +1,7 @@
 # モデル設定・エージェント動作・推論制御
 
+> 参照元: https://hermes-agent.nousresearch.com/docs/user-guide/configuration#auxiliary-models
+
 ## ディレクトリ構造
 
 ```

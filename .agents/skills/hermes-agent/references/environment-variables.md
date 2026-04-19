@@ -1,5 +1,7 @@
 # Hermes Agent 環境変数リファレンス
 
+> 参照元: https://hermes-agent.nousresearch.com/docs/reference/environment-variables
+
 すべての環境変数は `~/.hermes/.env` に設定する。`hermes config set VAR value` でも設定可能。
 
 ---

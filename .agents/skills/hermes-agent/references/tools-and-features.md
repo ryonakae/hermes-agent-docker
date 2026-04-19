@@ -1,5 +1,7 @@
 # Hermes Agent ツール・機能リファレンス
 
+> 参照元: https://hermes-agent.nousresearch.com/docs/user-guide/features/tools / https://hermes-agent.nousresearch.com/docs/reference/tools-reference
+
 ## 概要
 
 Hermes Agent のツールセットと主要機能をまとめたリファレンス。ツール一覧、メモリ、スキル、MCP、コンテキスト管理、メディア処理、プロバイダー設定など幅広い機能を扱う。

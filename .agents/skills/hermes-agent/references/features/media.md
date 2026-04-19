@@ -1,5 +1,7 @@
 # 画像生成・ブラウザ自動化・ビジョン・TTS/STT・ボイスモード
 
+> 参照元: https://hermes-agent.nousresearch.com/docs/user-guide/features/vision / https://hermes-agent.nousresearch.com/docs/user-guide/features/image-generation / https://hermes-agent.nousresearch.com/docs/user-guide/features/browser
+
 ## 画像生成
 
 FAL.ai 経由で 8 モデルに対応。`FAL_KEY` または Nous サブスクリプション（Gateway 経由）で利用可能。

@@ -1,5 +1,7 @@
 # Mattermost
 
+> 参照元: https://hermes-agent.nousresearch.com/docs/user-guide/messaging/mattermost
+
 Bot アカウント経由で Mattermost に接続。Personal Access Token で認証する。
 
 ## 環境変数

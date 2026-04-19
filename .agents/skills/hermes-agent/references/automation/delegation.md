@@ -1,5 +1,7 @@
 # サブエージェント委譲
 
+> 参照元: https://hermes-agent.nousresearch.com/docs/user-guide/features/delegation
+
 ## 単一タスク委譲
 
 ```python

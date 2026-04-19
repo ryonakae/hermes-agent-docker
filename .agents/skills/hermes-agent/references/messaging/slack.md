@@ -1,5 +1,7 @@
 # Slack
 
+> 参照元: https://hermes-agent.nousresearch.com/docs/user-guide/messaging/slack
+
 ## セットアップ
 
 1. [Slack API](https://api.slack.com/apps) でアプリ作成

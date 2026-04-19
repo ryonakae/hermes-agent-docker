@@ -1,5 +1,7 @@
 # スキルシステム
 
+> 参照元: https://hermes-agent.nousresearch.com/docs/user-guide/features/skills
+
 ## プログレッシブディスクロージャー
 
 ```

@@ -1,5 +1,7 @@
 # ターミナルバックエンド
 
+> 参照元: https://hermes-agent.nousresearch.com/docs/user-guide/configuration#terminal-backend-configuration
+
 6 種類: `local`（デフォルト）、`docker`、`ssh`、`modal`、`daytona`、`singularity`
 
 ```yaml

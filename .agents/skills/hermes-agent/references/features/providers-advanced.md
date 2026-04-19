@@ -1,5 +1,7 @@
 # Tool Gateway・プロバイダールーティング・フォールバック・クレデンシャルプール
 
+> 参照元: https://hermes-agent.nousresearch.com/docs/user-guide/features/provider-routing / https://hermes-agent.nousresearch.com/docs/user-guide/features/fallback-providers / https://hermes-agent.nousresearch.com/docs/user-guide/features/credential-pools
+
 ## Tool Gateway (Nous Portal)
 
 Nous の有料サブスクリプション機能。Web 検索、画像生成、TTS、ブラウザを個別の API キーなしで利用できる。
