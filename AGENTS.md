@@ -34,6 +34,7 @@ docker compose down
 - `env.defaults`: 初回 seed 時にカスタム変数キーを `hermes-data/.env` へマージするテンプレート。新しいキーを追加すると次回起動時に自動追記される。
 - `hermes-data/`: コンテナ内 `/opt/data` に bind mount されるローカル状態。git 管理しない。
 - `CLAUDE.md`: `AGENTS.md` へのシンボリックリンク。編集は `AGENTS.md` 側で行う。
+- `.agents/skills/hermes-agent/`: Hermes Agent の操作・設定・拡張に関する汎用スキル。`SKILL.md` がメインで、`references/` に CLI コマンド、設定、ツール、プロバイダー、メッセージング、自動化、環境変数、トラブルシューティングの詳細リファレンスを持つ。
 
 ## 変更時の注意
 
