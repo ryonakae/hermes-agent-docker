@@ -1,12 +1,9 @@
 FROM nousresearch/hermes-agent:latest
 
-ENV PATH="\
-/opt/data/tools/uv/bin:\
-/opt/data/tools/gcloud/sdk/bin:\
-/opt/data/tools/gws/install/bin:\
-/opt/data/tools/agent-browser/install/bin:\
-/opt/hermes/.venv/bin:\
-/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+ARG GWS_VERSION=0.22.3
+ARG AGENT_BROWSER_VERSION=0.24.1
+
+ENV GOOGLE_WORKSPACE_CLI_KEYRING_BACKEND=file
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends ca-certificates curl xz-utils \
@@ -15,6 +12,29 @@ RUN apt-get update \
 RUN set -eu; \
     export UV_UNMANAGED_INSTALL=/usr/local/bin; \
     curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# gcloud CLI
+RUN set -eu; \
+    arch=$(uname -m); \
+    case "$arch" in \
+      x86_64)  archive_name="google-cloud-cli-linux-x86_64.tar.gz" ;; \
+      arm64|aarch64) archive_name="google-cloud-cli-linux-arm.tar.gz" ;; \
+      *) echo "未対応のCPUアーキテクチャ: $arch" >&2; exit 1 ;; \
+    esac; \
+    curl -fsSL "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/$archive_name" \
+      | tar -xz -C /usr/local/lib; \
+    ln -s /usr/local/lib/google-cloud-sdk/bin/gcloud /usr/local/bin/gcloud; \
+    ln -s /usr/local/lib/google-cloud-sdk/bin/gsutil /usr/local/bin/gsutil
+
+# gws (Google Workspace CLI)
+RUN npm install -g "@googleworkspace/cli@${GWS_VERSION}"
+
+# gws ラッパースクリプト
+COPY bin/gws/ /tmp/gws-wrappers/
+RUN cp -f /tmp/gws-wrappers/* "$(dirname "$(which gws)")/" && rm -rf /tmp/gws-wrappers
+
+# agent-browser CLI（ブラウザバイナリは公式同梱の Playwright を使う）
+RUN npm install -g "agent-browser@${AGENT_BROWSER_VERSION}"
 
 # 必要なaptパッケージをここに追記する
 RUN set -eu; \
@@ -42,6 +62,5 @@ RUN set -eu; \
 
 COPY config.defaults.yaml /usr/local/share/hermes/config.defaults.yaml
 COPY env.defaults /usr/local/share/hermes/env.defaults
-COPY bin/ /usr/local/share/hermes/bin/
 COPY entrypoint.sh /usr/local/bin/custom-entrypoint.sh
 RUN chmod +x /usr/local/bin/custom-entrypoint.sh

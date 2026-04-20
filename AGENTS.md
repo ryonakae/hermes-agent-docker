@@ -26,10 +26,10 @@ docker compose down
 
 ## 重要ファイル
 
-- `Dockerfile`: ベースイメージ拡張。追加の apt / Python パッケージと PATH などの環境変数もここで管理する。
+- `Dockerfile`: ベースイメージ拡張。`gcloud` / `gws` / `agent-browser` のインストール、追加の apt / Python パッケージ、環境変数をここで管理する。ツールのバージョンは `ARG` で指定。
 - `docker-compose.yml`: ローカル起動定義。ポート、永続化ボリュームを持つ。
-- `entrypoint.sh`: 初回 bootstrap、`gcloud` / `gws` / `agent-browser` 導入、`bin/` のラッパースクリプト配置、seed 処理、gateway 起動を行う。
-- `bin/`: コンテナ内ツールのカスタムラッパースクリプト。`bin/<tool>/` にスクリプトを置き、`entrypoint.sh` がツールインストール後に対応する bin ディレクトリへコピーする。
+- `entrypoint.sh`: カスタム設定の seed（config.yaml、.env）を行い、公式 entrypoint に委譲する。
+- `bin/`: コンテナ内ツールのカスタムラッパースクリプト。`Dockerfile` でツールの bin ディレクトリへコピーされる。
 - `config.defaults.yaml`: 初回のみ `hermes-data/config.yaml` へ seed する非機密設定。
 - `env.defaults`: 初回 seed 時にカスタム変数キーを `hermes-data/.env` へマージするテンプレート。新しいキーを追加すると次回起動時に自動追記される。
 - `hermes-data/`: コンテナ内 `/opt/data` に bind mount されるローカル状態。git 管理しない。
@@ -42,3 +42,4 @@ docker compose down
 - 既存環境へ設定反映が必要な変更では、「新規 seed には効くが既存 `hermes-data/` には自動反映されない」前提で影響を考える。
 - 秘密情報は追跡ファイルへ書かない。`hermes-data/.env` か `hermes-data/` 配下で扱う。
 - 追加の apt / Python パッケージは `Dockerfile` の専用セクションへ追記する。
+- `gcloud` / `gws` / `agent-browser` のバージョン変更は `Dockerfile` の `ARG` を更新し、`docker compose up -d --build` で反映する。
