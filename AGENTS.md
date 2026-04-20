@@ -21,17 +21,15 @@ docker compose down
 ## 検証
 
 - `Dockerfile`、`docker-compose.yml`、`entrypoint.sh`、`config.defaults.yaml` を変えたら、最低限 `docker compose up -d --build`、`docker compose logs -f hermes`、`docker compose exec hermes hermes doctor` を順に確認する。
-- `env.defaults` を変えたら、README のセットアップ手順と矛盾しないか確認する。
 - この repo はアプリ本体のユニットテスト repo ではない。まずはコンテナが起動し、gateway が健康状態になることを検証の基準にする。
 
 ## 重要ファイル
 
 - `Dockerfile`: ベースイメージ拡張。`gcloud` / `gws` / `agent-browser` のインストール、追加の apt / Python パッケージ、環境変数をここで管理する。ツールのバージョンは `ARG` で指定。
 - `docker-compose.yml`: ローカル起動定義。ポート、永続化ボリュームを持つ。
-- `entrypoint.sh`: カスタム設定の seed（config.yaml、.env）を行い、公式 entrypoint に委譲する。
+- `entrypoint.sh`: カスタム設定の seed（config.yaml）を行い、公式 entrypoint に委譲する。
 - `bin/`: コンテナ内ツールのカスタムラッパースクリプト。`Dockerfile` でツールの bin ディレクトリへコピーされる。
 - `config.defaults.yaml`: 初回のみ `hermes-data/config.yaml` へ seed する非機密設定。
-- `env.defaults`: 初回 seed 時にカスタム変数キーを `hermes-data/.env` へマージするテンプレート。新しいキーを追加すると次回起動時に自動追記される。
 - `hermes-data/`: コンテナ内 `/opt/data` に bind mount されるローカル状態。git 管理しない。
 - `CLAUDE.md`: `AGENTS.md` へのシンボリックリンク。編集は `AGENTS.md` 側で行う。
 - `.agents/skills/hermes-agent/`: Hermes Agent の操作・設定・拡張に関する汎用スキル。`SKILL.md` がメインで、`references/` に CLI コマンド、設定、ツール、プロバイダー、メッセージング、自動化、環境変数、トラブルシューティングの詳細リファレンスを持つ。

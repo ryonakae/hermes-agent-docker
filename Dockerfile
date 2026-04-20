@@ -67,6 +67,5 @@ RUN set -eu; \
     fi
 
 COPY config.defaults.yaml /usr/local/share/hermes/config.defaults.yaml
-COPY env.defaults /usr/local/share/hermes/env.defaults
 COPY entrypoint.sh /usr/local/bin/custom-entrypoint.sh
 RUN chmod +x /usr/local/bin/custom-entrypoint.sh

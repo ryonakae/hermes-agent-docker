@@ -19,6 +19,9 @@ OPENROUTER_API_KEY=sk-...
 SLACK_BOT_TOKEN=xoxb-...
 SLACK_APP_TOKEN=xapp-...
 SLACK_ALLOWED_USERS=U...
+SLACK_HOME_CHANNEL=C...
+SLACK_HOME_CHANNEL_NAME=general
+GOOGLE_WORKSPACE_CLI_CREDENTIALS_FILE=/opt/data/google_client_secret.json
 
 docker compose restart hermes
 ```
@@ -78,5 +81,5 @@ docker compose down
 
 - `hermes-data/` は git 管理しません。状態、秘密情報の保存先です。
 - `gcloud`、`gws`、`agent-browser` とブラウザバイナリはイメージに焼き込まれています。コンテナ再作成でも再ダウンロードは発生しません（イメージ再ビルド時のみ）。
-- `config.defaults.yaml` と `env.defaults` は初回 seed 用です。既存の `hermes-data/config.yaml` や `hermes-data/.env` がある場合は上書きしません。`env.defaults` に新しい変数を追加すると、次回起動時に未定義キーのみ `hermes-data/.env` へ追記されます。
+- `config.defaults.yaml` は初回 seed 用です。既存の `hermes-data/config.yaml` がある場合は上書きしません。`.env` は公式テンプレートから初回起動時に自動生成されます。
 - 追加の apt / Python パッケージは Dockerfile の専用セクションで管理します。変更後は `docker compose up -d --build` で再ビルドします。
