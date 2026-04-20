@@ -23,7 +23,7 @@ SLACK_ALLOWED_USERS=U...
 docker compose restart hermes
 ```
 
-初回起動時は `gcloud`、`gws 0.22.3`、`agent-browser 0.24.1` を自動導入するため、通常より時間がかかります。`uv` は Docker build 時にイメージへ同梱されます。
+`gcloud`、`gws`、`agent-browser`、`uv` は Docker build 時にイメージへ同梱されます。バージョンは Dockerfile の `ARG` で管理します。
 
 ## アクセス
 
@@ -77,6 +77,6 @@ docker compose down
 ## 永続化と変更時の注意
 
 - `hermes-data/` は git 管理しません。状態、秘密情報の保存先です。
-- `gcloud`、`gws`、`agent-browser` 本体と `agent-browser install` が展開するブラウザは `hermes-data/tools/` 配下に永続化されるため、コンテナ再作成後も再利用できます。
+- `gcloud`、`gws`、`agent-browser` とブラウザバイナリはイメージに焼き込まれています。コンテナ再作成でも再ダウンロードは発生しません（イメージ再ビルド時のみ）。
 - `config.defaults.yaml` と `env.defaults` は初回 seed 用です。既存の `hermes-data/config.yaml` や `hermes-data/.env` がある場合は上書きしません。`env.defaults` に新しい変数を追加すると、次回起動時に未定義キーのみ `hermes-data/.env` へ追記されます。
 - 追加の apt / Python パッケージは Dockerfile の専用セクションで管理します。変更後は `docker compose up -d --build` で再ビルドします。
