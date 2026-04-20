@@ -33,8 +33,14 @@ RUN npm install -g "@googleworkspace/cli@${GWS_VERSION}"
 COPY bin/gws/ /tmp/gws-wrappers/
 RUN cp -f /tmp/gws-wrappers/* "$(dirname "$(which gws)")/" && rm -rf /tmp/gws-wrappers
 
-# agent-browser CLI（ブラウザバイナリは公式同梱の Playwright を使う）
-RUN npm install -g "agent-browser@${AGENT_BROWSER_VERSION}"
+# agent-browser CLI + Chrome for Testing
+# 公式同梱の Playwright は headless shell のみで agent-browser が認識しないため、
+# フルブラウザを /opt/hermes に焼き込む（bind mount で隠れない場所）
+RUN npm install -g "agent-browser@${AGENT_BROWSER_VERSION}" \
+    && HOME=/opt/hermes agent-browser install \
+    && ln -s /opt/hermes/.agent-browser/browsers/chrome-*/chrome \
+             /usr/local/bin/agent-browser-chrome
+ENV AGENT_BROWSER_EXECUTABLE_PATH=/usr/local/bin/agent-browser-chrome
 
 # 必要なaptパッケージをここに追記する
 RUN set -eu; \
