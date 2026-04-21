@@ -45,6 +45,7 @@ services:
       - ./hermes-data/hindsight/.env
     volumes:
       - ./hermes-data/hindsight/data:/home/hindsight/.pg0
+      - ./hermes-data/hindsight/codex-auth:/home/hindsight/.codex
     networks:
       - hermes-net
     healthcheck:

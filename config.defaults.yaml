@@ -3,6 +3,9 @@ model:
   default: gpt-5.4
   provider: openai-codex
 
+agent:
+  reasoning_effort: "high"
+
 approvals:
   mode: smart
 
@@ -15,7 +18,8 @@ auxiliary:
     model: gpt-5.4-mini
   compression:
     provider: codex
-    model: gpt-5.4-mini
+    # メインモデルと同じコンテクストウインドウのモデルにする必要がある
+    model: gpt-5.4
   session_search:
     provider: codex
     model: gpt-5.4-mini
@@ -58,3 +62,22 @@ memory:
 compression:
   enabled: true
   threshold: 0.50
+
+# memory ツールは Hindsight と競合するため除外 (リストから除外することでツールが無効化される)
+platform_toolsets:
+  cli:
+    - browser
+    - clarify
+    - code_execution
+    - cronjob
+    - delegation
+    - file
+    - image_gen
+    - messaging
+    - session_search
+    - skills
+    - terminal
+    - todo
+    - tts
+    - vision
+    - web
