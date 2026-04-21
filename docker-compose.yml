@@ -12,6 +12,11 @@ services:
       - "127.0.0.1:8642:8642"
     environment:
       TZ: Asia/Tokyo
+      HINDSIGHT_MODE: local_external
+      HINDSIGHT_API_URL: http://hindsight:8888
+    depends_on:
+      hindsight:
+        condition: service_healthy
     healthcheck:
       test: ["CMD", "curl", "-sf", "http://localhost:8642/health"]
       interval: 30s
@@ -28,6 +33,26 @@ services:
         limits:
           memory: 4G
           cpus: "2.0"
+
+  hindsight:
+    image: ghcr.io/vectorize-io/hindsight:latest
+    container_name: hindsight
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8888:8888"
+      - "127.0.0.1:9999:9999"
+    env_file:
+      - ./hermes-data/hindsight/.env
+    volumes:
+      - ./hermes-data/hindsight/data:/home/hindsight/.pg0
+    networks:
+      - hermes-net
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://localhost:8888/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
 
   dashboard:
     image: nousresearch/hermes-agent:latest

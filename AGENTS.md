@@ -26,11 +26,12 @@ docker compose down
 ## 重要ファイル
 
 - `Dockerfile`: ベースイメージ拡張。`gcloud` / `gws` / `agent-browser` のインストール、追加の apt / Python パッケージ、環境変数、ユーザー権限をここで管理する。ツールのバージョンは `ARG` で指定。公式ベースイメージが非 root ユーザー対応のため、root 権限が必要な操作は `USER root` で行い、最後に `USER hermes` で権限を落とす。
-- `docker-compose.yml`: ローカル起動定義。ポート、永続化ボリュームを持つ。
-- `entrypoint.sh`: カスタム設定の seed（config.yaml）を行い、公式 entrypoint に委譲する。
+- `docker-compose.yml`: ローカル起動定義。hermes（gateway）、hindsight（メモリ）、dashboard の3サービス構成。
+- `entrypoint.sh`: カスタム設定の seed（config.yaml, hindsight/config.json）を行い、公式 entrypoint に委譲する。
 - `bin/`: コンテナ内ツールのカスタムラッパースクリプト。`Dockerfile` でツールの bin ディレクトリへコピーされる。
 - `config.defaults.yaml`: 初回のみ `hermes-data/config.yaml` へ seed する非機密設定。
-- `hermes-data/`: コンテナ内 `/opt/data` に bind mount されるローカル状態。git 管理しない。
+- `hindsight.config.defaults.json`: 初回のみ `hermes-data/hindsight/config.json` へ seed する Hindsight プラグイン設定。
+- `hermes-data/`: コンテナ内 `/opt/data` に bind mount されるローカル状態。git 管理しない。`hermes-data/hindsight/` は Hindsight のデータと `.env` を格納する。
 - `CLAUDE.md`: `AGENTS.md` へのシンボリックリンク。編集は `AGENTS.md` 側で行う。
 - `.agents/skills/hermes-agent/`: Hermes Agent の操作・設定・拡張に関する汎用スキル。`SKILL.md` がメインで、`references/` に CLI コマンド、設定、ツール、プロバイダー、メッセージング、自動化、環境変数、トラブルシューティングの詳細リファレンスを持つ。
 
@@ -38,6 +39,6 @@ docker compose down
 
 - `config.defaults.yaml` は seed 専用。`entrypoint.sh` は既存ファイルがある場合に上書きしない。
 - 既存環境へ設定反映が必要な変更では、「新規 seed には効くが既存 `hermes-data/` には自動反映されない」前提で影響を考える。
-- 秘密情報は追跡ファイルへ書かない。`hermes-data/.env` か `hermes-data/` 配下で扱う。
+- 秘密情報は追跡ファイルへ書かない。`hermes-data/.env`（hermes 用）や `hermes-data/hindsight/.env`（Hindsight 用）で扱う。
 - 追加の apt / Python パッケージは `Dockerfile` の専用セクションへ追記する。
 - `gcloud` / `gws` / `agent-browser` のバージョン変更は `Dockerfile` の `ARG` を更新し、`docker compose up -d --build` で反映する。

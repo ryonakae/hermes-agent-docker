@@ -62,8 +62,7 @@ RUN set -eu; \
 # 必要なPythonパッケージをここに追記する
 RUN set -eu; \
     extra_python_packages=' \
-      # 例: requests \
-      # 例: pandas \
+      hindsight-client>=0.4.22 \
     '; \
     extra_python_packages="$(printf '%s\n' "$extra_python_packages" | sed 's/#.*//' | xargs)"; \
     if [ -n "$extra_python_packages" ]; then \
@@ -71,6 +70,7 @@ RUN set -eu; \
     fi
 
 COPY config.defaults.yaml /usr/local/share/hermes/config.defaults.yaml
+COPY hindsight.config.defaults.json /usr/local/share/hermes/hindsight.config.defaults.json
 COPY entrypoint.sh /usr/local/bin/custom-entrypoint.sh
 RUN chmod +x /usr/local/bin/custom-entrypoint.sh
 
