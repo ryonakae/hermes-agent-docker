@@ -26,6 +26,7 @@ GOOGLE_WORKSPACE_CLI_CREDENTIALS_FILE=/opt/data/google_client_secret.json
 # hermes-data/hindsight/.env を編集（Hindsight メモリ用）
 HINDSIGHT_API_LLM_PROVIDER=openrouter
 HINDSIGHT_API_LLM_API_KEY=sk-...
+HINDSIGHT_API_LLM_MODEL=google/gemini-2.5-flash
 
 docker compose restart hermes
 ```
