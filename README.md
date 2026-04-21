@@ -77,6 +77,15 @@ docker compose restart hermes
 docker compose down
 ```
 
+## アップデート
+
+```bash
+docker compose pull           # ベースイメージを最新に更新
+docker compose up -d --build  # リビルド＆起動
+```
+
+`hermes-data/` 配下の設定やデータはボリュームマウントのため保持されます。
+
 ## 永続化と変更時の注意
 
 - `hermes-data/` は git 管理しません。状態、秘密情報の保存先です。

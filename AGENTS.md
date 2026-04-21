@@ -25,7 +25,7 @@ docker compose down
 
 ## 重要ファイル
 
-- `Dockerfile`: ベースイメージ拡張。`gcloud` / `gws` / `agent-browser` のインストール、追加の apt / Python パッケージ、環境変数をここで管理する。ツールのバージョンは `ARG` で指定。
+- `Dockerfile`: ベースイメージ拡張。`gcloud` / `gws` / `agent-browser` のインストール、追加の apt / Python パッケージ、環境変数、ユーザー権限をここで管理する。ツールのバージョンは `ARG` で指定。公式ベースイメージが非 root ユーザー対応のため、root 権限が必要な操作は `USER root` で行い、最後に `USER hermes` で権限を落とす。
 - `docker-compose.yml`: ローカル起動定義。ポート、永続化ボリュームを持つ。
 - `entrypoint.sh`: カスタム設定の seed（config.yaml）を行い、公式 entrypoint に委譲する。
 - `bin/`: コンテナ内ツールのカスタムラッパースクリプト。`Dockerfile` でツールの bin ディレクトリへコピーされる。

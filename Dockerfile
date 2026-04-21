@@ -4,7 +4,9 @@ ARG GWS_VERSION=0.22.3
 ARG AGENT_BROWSER_VERSION=0.24.1
 
 ENV GOOGLE_WORKSPACE_CLI_KEYRING_BACKEND=file
-ENV PATH="/opt/hermes/.venv/bin:${PATH}"
+ENV PATH="/opt/hermes:/opt/hermes/.venv/bin:${PATH}"
+
+USER root
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends ca-certificates curl xz-utils \
@@ -39,6 +41,7 @@ RUN cp -f /tmp/gws-wrappers/* "$(dirname "$(which gws)")/" && rm -rf /tmp/gws-wr
 # フルブラウザを /opt/hermes に焼き込む（bind mount で隠れない場所）
 RUN npm install -g "agent-browser@${AGENT_BROWSER_VERSION}" \
     && HOME=/opt/hermes agent-browser install \
+    && chown -R hermes:hermes /opt/hermes/.agent-browser \
     && ln -s /opt/hermes/.agent-browser/browsers/chrome-*/chrome \
              /usr/local/bin/agent-browser-chrome
 ENV AGENT_BROWSER_EXECUTABLE_PATH=/usr/local/bin/agent-browser-chrome
@@ -70,3 +73,5 @@ RUN set -eu; \
 COPY config.defaults.yaml /usr/local/share/hermes/config.defaults.yaml
 COPY entrypoint.sh /usr/local/bin/custom-entrypoint.sh
 RUN chmod +x /usr/local/bin/custom-entrypoint.sh
+
+USER hermes
