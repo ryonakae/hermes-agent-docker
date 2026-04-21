@@ -4,6 +4,7 @@ ARG GWS_VERSION=0.22.3
 ARG AGENT_BROWSER_VERSION=0.24.1
 
 ENV GOOGLE_WORKSPACE_CLI_KEYRING_BACKEND=file
+ENV PATH="/opt/hermes/.venv/bin:${PATH}"
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends ca-certificates curl xz-utils \
