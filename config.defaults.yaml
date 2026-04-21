@@ -1,40 +1,39 @@
 model:
-  provider: openrouter
-  default: google/gemma-4-31b-it
-  base_url: https://openrouter.ai/api/v1
-  api_mode: chat_completions
+  base_url: https://chatgpt.com/backend-api/codex
+  default: gpt-5.4
+  provider: openai-codex
 
 approvals:
   mode: smart
 
 auxiliary:
   vision:
-    provider: openrouter
-    model: qwen/qwen3.5-flash-02-23
+    provider: codex
+    model: gpt-5.4-mini
   web_extract:
-    provider: openrouter
-    model: qwen/qwen3.5-flash-02-23
+    provider: codex
+    model: gpt-5.4-mini
   compression:
-    provider: openrouter
-    model: qwen/qwen3.5-flash-02-23
+    provider: codex
+    model: gpt-5.4-mini
   session_search:
-    provider: openrouter
-    model: qwen/qwen3.5-flash-02-23
+    provider: codex
+    model: gpt-5.4-mini
   skills_hub:
-    provider: openrouter
-    model: qwen/qwen3.5-flash-02-23
+    provider: codex
+    model: gpt-5.4-mini
   approval:
-    provider: openrouter
-    model: qwen/qwen3.5-flash-02-23
+    provider: codex
+    model: gpt-5.4-mini
   mcp:
-    provider: openrouter
-    model: qwen/qwen3.5-flash-02-23
+    provider: codex
+    model: gpt-5.4-mini
   flush_memories:
-    provider: openrouter
-    model: qwen/qwen3.5-flash-02-23
+    provider: codex
+    model: gpt-5.4-mini
   title_generation:
-    provider: openrouter
-    model: qwen/qwen3.5-flash-02-23
+    provider: codex
+    model: gpt-5.4-mini
 
 terminal:
   backend: local
