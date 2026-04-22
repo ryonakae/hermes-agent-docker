@@ -31,7 +31,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 4G
+          memory: 2G
           cpus: "2.0"
 
   hindsight:
@@ -43,6 +43,10 @@ services:
       - "127.0.0.1:9999:9999"
     env_file:
       - ./hermes-data/hindsight/.env
+    environment:
+      HINDSIGHT_API_DB_POOL_MAX_SIZE: "30"
+      HINDSIGHT_API_WORKER_MAX_SLOTS: "8"
+      HINDSIGHT_API_LLM_MAX_CONCURRENT: "16"
     volumes:
       - ./hermes-data/hindsight/data:/home/hindsight/.pg0
       - ./hermes-data/hindsight/codex-auth:/home/hindsight/.codex
@@ -54,6 +58,10 @@ services:
       timeout: 10s
       retries: 3
       start_period: 60s
+    deploy:
+      resources:
+        limits:
+          memory: 4G
 
   dashboard:
     image: nousresearch/hermes-agent:latest
