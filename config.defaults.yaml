@@ -62,3 +62,6 @@ memory:
 compression:
   enabled: true
   threshold: 0.50
+
+cron:
+  wrap_response: false
