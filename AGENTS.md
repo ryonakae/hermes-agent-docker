@@ -32,6 +32,8 @@ docker compose down
 - `config.defaults.yaml`: 初回のみ `hermes-data/config.yaml` へ seed する非機密設定。Hermes の推論、補助モデル、ツール除外などを定義。
 - `hindsight.config.defaults.json`: 初回のみ `hermes-data/hindsight/config.json` へ seed する Hindsight プラグイン設定。
 - `hermes-data/`: コンテナ内 `/opt/data` に bind mount されるローカル状態。git 管理しない。`hermes-data/hindsight/` は Hindsight のデータと `.env` を格納する。
+- `hermes-webui/`: [hermes-webui](https://github.com/nesquena/hermes-webui) の git submodule。Docker ではなくホスト側でネイティブ実行する。`webui.sh` で起動・停止を管理。
+- `webui.sh`: WebUI の起動・停止・ログ表示を行うラッパースクリプト。
 - `CLAUDE.md`: `AGENTS.md` へのシンボリックリンク。編集は `AGENTS.md` 側で行う。
 
 ## 変更時の注意

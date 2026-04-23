@@ -79,12 +79,32 @@ docker compose up -d --build
 docker compose ps
 docker compose logs -f hermes
 docker compose logs -f hermes-dashboard
-docker compose logs -f hermes-webui
 docker compose exec hermes hermes doctor
 docker compose exec hermes hermes status
 docker compose exec hermes sh
 docker compose restart hermes
 docker compose down
+```
+
+## WebUI
+
+[hermes-webui](https://github.com/nesquena/hermes-webui) は git submodule として `hermes-webui/` に配置し、ホスト側でネイティブ実行します。
+
+```bash
+./webui.sh start    # 起動（初回は自動で venv 作成 + 依存インストール）
+./webui.sh stop     # 停止
+./webui.sh restart  # 再起動
+./webui.sh status   # 状態確認
+./webui.sh logs     # ログ表示
+./webui.sh setup    # venv 再作成
+```
+
+WebUI の更新:
+
+```bash
+git submodule update --remote hermes-webui
+./webui.sh setup    # 依存関係を再インストール
+./webui.sh restart
 ```
 
 ## アップデート

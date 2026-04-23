@@ -63,7 +63,7 @@ services:
       interval: 30s
       timeout: 10s
       retries: 3
-      start_period: 60s
+      start_period: 180s
     deploy:
       resources:
         limits:
@@ -91,27 +91,6 @@ services:
           memory: 512M
           cpus: "0.5"
 
-  webui:
-    image: ghcr.io/nesquena/hermes-webui:latest
-    container_name: hermes-webui
-    restart: unless-stopped
-    ports:
-      - "127.0.0.1:8787:8787"
-    environment:
-      TZ: Asia/Tokyo
-      HERMES_WEBUI_HOST: "0.0.0.0"
-      HERMES_WEBUI_PORT: "8787"
-    volumes:
-      - ./hermes-data:/home/hermeswebui/.hermes
-    networks:
-      - hermes-net
-    depends_on:
-      - hermes
-    deploy:
-      resources:
-        limits:
-          memory: 512M
-          cpus: "0.5"
 
 networks:
   hermes-net:
