@@ -1,5 +1,5 @@
 ---
-name: hermes-agent
+name: hermes-agent-guide
 description: |
   Hermes Agent（Nous Research の AI CLI エージェント）のセットアップ、設定、機能実装、トラブルシューティングの完全ガイド。
   ユーザーが hermes / hermes agent / ハーメス に言及したとき、config.yaml / .env / SOUL.md / MEMORY.md を編集するとき、gateway / hermes doctor / hermes config / hermes model / hermes tools について質問したとき、MCP サーバー追加・スキル管理（hermes skills）・ボイスモード / TTS・cron タスク・Telegram / Discord / Slack ボット構築・LLM プロバイダー切替に関する作業のときに使う。
